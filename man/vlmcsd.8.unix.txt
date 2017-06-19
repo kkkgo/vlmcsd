@@ -49,7 +49,7 @@ DESCRIPTION
 
               EPID  Randomization  Level  1  (option  -r1)  works like Level 2
               (-r2). You may want  to  use  Level  0  (-r0)  or  custom  EPIDs
-              (options -w, -0, -3 and -6) instead.
+              (options -w, -G, -0, -3 and -6) instead.
 
 
 OPTIONS
@@ -512,8 +512,8 @@ OPTIONS
               more than one activation request over the same  TCP  connection.
               This  is  simply  due  to the fact that vlmcsd is started upon a
               connection request and does not stay in memory after servicing a
-              KMS request. Consider using -r0 or -w, -0, -3 and -6 when start-
-              ing vlmcsd by an internet superserver.
+              KMS  request.  Consider  using -r0 or -w, -G, -0, -3 and -6 when
+              starting vlmcsd by an internet superserver.
 
               -r2 behaves like most other KMS  server  emulators  with  random
               support  and  generates  a new random ePID on every request. -r2
@@ -732,7 +732,7 @@ SIGNALS
                  thing else would be a severe security flaw in the OS.
 
        Signaling is not available in the native Windows  version  and  in  the
-       Cygwin version when it runs as Windows service.
+       Cygwin version when vlmcsd runs as a Windows service.
 
 
 SUPPORTED OPERATING SYSTEMS
@@ -745,11 +745,11 @@ SUPPORTED OPERATING SYSTEMS
 
 SUPPORTED PRODUCTS
        vlmcsd  can answer activation requests for the following products: Win-
-       dows Vista, Windows 7, Windows 8, Windows 8.1, Windows 10 (up to 1607),
+       dows Vista, Windows 7, Windows 8, Windows 8.1, Windows 10 (up to 1703),
        Windows  Server 2008, Windows Server 2008 R2, Windows Server 2012, Win-
        dows Server 2012 R2, Windows Server 2016, Office  2010,  Project  2010,
        Visio 2010, Office 2013, Project 2013, Visio 2013, Office 2016, Project
-       2016, Visio 2016. Newer version may work as long as  the  KMS  protocol
+       2016, Visio 2016. Newer products may work as long as the  KMS  protocol
        does  not  change.  A  complete list of fully supported products can be
        obtained using the -x option of vlmcs(1).
 
@@ -803,4 +803,4 @@ SEE ALSO
 
 
 
-Hotbird64                          May 2017                          VLMCSD(8)
+Hotbird64                          June 2017                         VLMCSD(8)

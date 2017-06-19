@@ -258,12 +258,6 @@ typedef struct VlmcsdData
 		char* Name;
 	};
 
-	//union
-	//{
-	//	uint64_t X_EPidOffset;
-	//	char* X_EPid;
-	//};
-
 	uint8_t AppIndex;
 	uint8_t KmsIndex;
 	uint8_t ProtocolVersion;

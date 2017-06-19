@@ -297,7 +297,7 @@ static void generateRandomPid(int index, char *const szPid, int serverType, int1
 
 #	define minTime ((time_t)1470175200) /* Release Date Win 2016 */
 
-	time_t maxTime, kmsTime;
+	time_t maxTime;
 	time(&maxTime);
 
 #	ifndef BUILD_TIME
@@ -307,10 +307,8 @@ static void generateRandomPid(int index, char *const szPid, int serverType, int1
 	if (maxTime < (time_t)BUILD_TIME) // Just in case the system time is < 10/17/2013 1:00 pm
 		maxTime = (time_t)BUILD_TIME;
 
-	kmsTime = (rand32() % (maxTime - minTime)) + minTime;
-
-	struct tm *pidTime;
-	pidTime = gmtime(&kmsTime);
+	time_t kmsTime = (rand32() % (maxTime - minTime)) + minTime;
+	struct tm *pidTime = gmtime(&kmsTime);
 
 	strcat(szPid, itoc(numberBuffer, pidTime->tm_yday, 3));
 	strcat(szPid, itoc(numberBuffer, pidTime->tm_year + 1900, 4));
@@ -730,8 +728,7 @@ __pure static uint64_t TimestampInterval(void *ts)
 static int_fast8_t CreateV6Hmac(BYTE *const encrypt_start, const size_t encryptSize, int_fast8_t tolerance)
 {
 	BYTE hash[32];
-#	define halfHashSize (sizeof(hash) >> 1)
-	uint64_t timeSlot;
+	const uint8_t halfHashSize = sizeof(hash) >> 1;
 	BYTE *responseEnd = encrypt_start + encryptSize;
 
 	// This is the time from the response
@@ -742,7 +739,7 @@ static int_fast8_t CreateV6Hmac(BYTE *const encrypt_start, const size_t encryptS
 	// When generating a response tolerance must be 0.
 	// If verifying the hash, try tolerance -1, 0 and +1. One of them must match.
 
-	timeSlot = LE64((GET_UA64LE(ft) / TIME_C1 * TIME_C2 + TIME_C3) + (tolerance * TIME_C1));
+	uint64_t timeSlot = LE64((GET_UA64LE(ft) / TIME_C1 * TIME_C2 + TIME_C3) + (tolerance * TIME_C1));
 
 	// The time slot is hashed with SHA256 so it is not so obvious that it is time
 	Sha256((BYTE*)&timeSlot, sizeof(timeSlot), hash);
@@ -761,7 +758,6 @@ static int_fast8_t CreateV6Hmac(BYTE *const encrypt_start, const size_t encryptS
 
 	memcpy(responseEnd - sizeof(((RESPONSE_V6*)0)->HMAC), hash + halfHashSize, halfHashSize);
 	return TRUE;
-#	undef halfHashSize
 }
 
 
