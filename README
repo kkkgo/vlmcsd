@@ -1,8 +1,4 @@
-本仓库同步自mydigitallife论坛,二进制部分有删减.
-2017-06-17 (1111)
-This code is synchronized from the mydigitallife forum.
-https://forums.mydigitallife.net/threads/emulated-kms-servers-on-non-windows-platforms.50234/
-
+vlmcsd-1112-2018-10-20
 To view the documentation cd to the directory containing the distribution
 files and type
 
@@ -17,3 +13,6 @@ man man/vlmcsd.7
 
 If you don't have man, you may also use the .txt, .html and .pdf files
 in the man directory
+
+This code is synchronized from the mydigitallife forum.
+https://forums.mydigitallife.net/threads/emulated-kms-servers-on-non-windows-platforms.50234/
