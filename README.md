@@ -2,7 +2,7 @@
 **vlmcsd-1112-2018-10-20   [Binaries][1]**   
 
 |Supported operating systems / run-time environments|
--|
+:-|
 Supported operating systems：Linux, GNU/Linux, uclibc/Linux, musl/Linux, Android (bionic/Linux), FreeBSD, FreeBSD with glibc (e.g. debian/kFreeBSD), OpenBSD, NetBSD, DragonflyBSD, Solaris, Open Indiana, Dyson, Minix, Darwin, Mac OS, iOS, Windows, Cygwin, WSL, Wine, The Hurd. |
 Supported CPUs : x86，arm, mips, PowerPC, Sparc, s390|
 Number of binaries included in distribution : 163|
