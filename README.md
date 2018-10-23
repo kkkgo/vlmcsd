@@ -1,4 +1,4 @@
-# vlmcsd - portable open-source KMS Emulator in C  
+# vlmcsd - Portable open-source KMS Emulator in C  
 **vlmcsd-1112-2018-10-20   [Binaries][1]**   
 
 |Supported operating systems / run-time environments|
