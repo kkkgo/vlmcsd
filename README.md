@@ -5,7 +5,6 @@
 :-|
 Supported operating systems：Linux, GNU/Linux, uclibc/Linux, musl/Linux, Android (bionic/Linux), FreeBSD, FreeBSD with glibc (e.g. debian/kFreeBSD), OpenBSD, NetBSD, DragonflyBSD, Solaris, Open Indiana, Dyson, Minix, Darwin, Mac OS, iOS, Windows, Cygwin, WSL, Wine, The Hurd. |
 Supported CPUs : x86，arm, mips, PowerPC, Sparc, s390|
-Number of binaries included in distribution : 163|
 Number of explicitly supported products to activate : 202|
 
 NAME|DESCRIPTION|USAGE
@@ -26,7 +25,7 @@ vlmcsdmulti | vlmcsdmulti is a multi-call binary that contains vlmcs and vlmcsd 
  - man man/vlmcsd.7  
 	to see general documentation for kms  
 
-If you don't have man, you may also use the .txt, .html and .pdf files in the man directory. 
+If you don't have man, you may also use the .txt, .html and .pdf files in [the man directory][2]. 
 
 
 ----------
