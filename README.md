@@ -14,7 +14,7 @@ vlmcs | a client for testing and/or charging KMS servers|vlmcs [ options ] [ tar
 vlmcsd | a fully Microsoft compatible KMS server|vlmcsd [ options ] 
 vlmcsdmulti | vlmcsdmulti is a multi-call binary that contains vlmcs and vlmcsd in  a  single binary. |vlmcsdmulti  vlmcs [options ] [ hostname\|ip-address[:port] ] [ options ] or vlmcsd [ option ]|
 
-### To view the documentation cd to the directory containing the distribution  
+### To view the documentation cd to the [directory][2] containing the distribution  
 **files and type**  
 
  - man man/vlmcsd.8  
@@ -254,4 +254,6 @@ Numbers|Product names
 > This is a copy from the mydigitallife forum.  
 > https://forums.mydigitallife.net/threads/emulated-kms-servers-on-non-windows-platforms.50234/
 
+
   [1]: https://github.com/lixuy/vlmcsd/tree/master/binaries "binaries"
+  [2]: https://github.com/lixuy/vlmcsd/tree/master/man
