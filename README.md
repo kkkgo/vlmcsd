@@ -1,12 +1,12 @@
 # vlmcsd - portable open-source KMS Emulator in C  
 **vlmcsd-1112-2018-10-20**  
-Supported operating systems / run-time environments
->Linux, GNU/Linux, uclibc/Linux, musl/Linux, Android (bionic/Linux), FreeBSD, FreeBSD with glibc (e.g. debian/kFreeBSD), OpenBSD, NetBSD, DragonflyBSD, Solaris, Open Indiana, Dyson, Minix, Darwin, Mac OS, iOS, Windows, Cygwin, WSL, Wine, The Hurd.
-Supported CPUs
-x86, arm, mips, PowerPC, Sparc, s390
-Number of binaries included in distribution: 163
-Number of explicitly supported products to activate: 202
 
+|Supported operating systems| Linux, GNU/Linux, uclibc/Linux, musl/Linux, Android (bionic/Linux), FreeBSD, FreeBSD with glibc (e.g. debian/kFreeBSD), OpenBSD, NetBSD, DragonflyBSD, Solaris, Open Indiana, Dyson, Minix, Darwin, Mac OS, iOS, Windows, Cygwin, WSL, Wine, The Hurd. |
+-|-
+Supported CPUs|x86，arm, mips, PowerPC, Sparc, s390
+Number of binaries included in distribution|163
+Number of explicitly supported products to activate|202
+[Binaries][1]
 ----------
 
 **vlmcsd is**   
@@ -35,3 +35,5 @@ If you don't have man, you may also use the .txt, .html and .pdf files in the ma
 
 > This is a copy from the mydigitallife forum.  
 > https://forums.mydigitallife.net/threads/emulated-kms-servers-on-non-windows-platforms.50234/
+
+  [1]: https://github.com/lixuy/vlmcsd/tree/master/binaries "binaries"
