@@ -1,4 +1,4 @@
-#vlmcsd - portable open-source KMS Emulator in C
+# vlmcsd - portable open-source KMS Emulator in C  
 **vlmcsd-1112-2018-10-20**  
 Supported operating systems / run-time environments
 >Linux, GNU/Linux, uclibc/Linux, musl/Linux, Android (bionic/Linux), FreeBSD, FreeBSD with glibc (e.g. debian/kFreeBSD), OpenBSD, NetBSD, DragonflyBSD, Solaris, Open Indiana, Dyson, Minix, Darwin, Mac OS, iOS, Windows, Cygwin, WSL, Wine, The Hurd.
@@ -7,9 +7,7 @@ x86, arm, mips, PowerPC, Sparc, s390
 Number of binaries included in distribution: 163
 Number of explicitly supported products to activate: 202
 
-
 ----------
-
 
 **vlmcsd is**   
 
@@ -19,11 +17,9 @@ Number of explicitly supported products to activate: 202
 
  - a one-click activation or crack tool intended to activate illegal copies of software (Windows, Office, Project, Visio)  
 
-
 ----------
 
-
-###To view the documentation cd to the directory containing the distribution
+### To view the documentation cd to the directory containing the distribution  
 **files and type**  
 
  - man man/vlmcsd.8  
@@ -37,5 +33,5 @@ Number of explicitly supported products to activate: 202
 
 If you don't have man, you may also use the .txt, .html and .pdf files in the man directory. 
 
-> This code is dowloaded from the mydigitallife forum.
+> This is a copy from the mydigitallife forum.  
 > https://forums.mydigitallife.net/threads/emulated-kms-servers-on-non-windows-platforms.50234/
