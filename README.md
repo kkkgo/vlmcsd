@@ -8,7 +8,7 @@ Supported CPUs : x86，arm, mips, PowerPC, Sparc, s390|
 Number of binaries included in distribution : 163|
 Number of explicitly supported products to activate : 202|
 
-NAME|DESCRIPTION|SYNOPSIS
+NAME|DESCRIPTION|USAGE
 :-|-|-
 vlmcs | a client for testing and/or charging KMS servers|vlmcs [ options ] [ target ] [options ]
 vlmcsd | a fully Microsoft compatible KMS server|vlmcsd [ options ] 
