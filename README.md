@@ -7,7 +7,7 @@ Supported operating systems：Linux, GNU/Linux, uclibc/Linux, musl/Linux, Androi
 Supported CPUs : x86，arm, mips, PowerPC, Sparc, s390|
 Number of binaries included in distribution : 163|
 Number of explicitly supported products to activate : 202|
-----------
+
 
 **vlmcsd is**   
 
