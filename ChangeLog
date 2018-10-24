@@ -1,0 +1,180 @@
+CHANGES
+2018-10-15 (1112)
+Support for Windows 10 1809, Windows Server 2019 and Office 2019 built-in
+vlmcsd now has fully configurable CSVLKs that allow a custom EPID and HwId for each CSVLK to be specified.
+Options -w, -0, -3, -6 and -G have been removed in favor for the new -a option.
+The -H option has been redefined: It now allows a fixed host build to be specified in random EPIDs
+New INI file directive HostBuild= that does the same as the new -H option.
+2017-06-17 (1111)
+Support for Windows Professional Workstation and Windows Professional Workstation N (aka Win 10 Pro for Advanced PCs)
+Updated vlmcsd.kmd
+Updated internal databases of vlmcs and vlmcsdmulti
+Some internal code optimizations
+2017-05-31 (1110)
+Updated Visual C++ Platform Toolset to v141_xp
+Updated gcc to 6.3.0 on many platforms
+Removed 32-bit cygwin OpenSSL binary because 64-bit Cygwin no longer features 32-bit OpenSSL headers and libraries
+Changed Windows build script to use MSBuild 2017
+Updated groff formatting options for ASCII (TXT) man files
+Added support for Enterprise G and Enterprise GN (Windows China Government Edition)
+New command line switch -G <EPID> to specify an EPID for Windows China Government versions
+New INI file directive WinChinaGov (same as command line -G)
+Added a warning if a legacy database is detected
+Bootable floppy: New SYSLINUX.CFG parameter WINCHINAGOV= to set the EPID for Windows China Government Editions (Enterprise G/GN)
+Added suffix _unused to some local parameters to indicate that MSVC compiler warnings can be ignored
+Renamed some local parameters to avoid compiler warnings
+Added casts to reduce MSVC compiler warnings
+Fixed a bug in memory allocation, if .kmd file has less CSVLKs than built-in minimum
+2017-01-19 (1108)
+Fixed a bug that Android x86/x64 builds terminated with SIGILL (illegal instruction) if run from a non-Atom CPU (thx to Daz)
+New option -x1 (requested by Hahu) that causes vlmcsd to exit if
+any of the listening sockets (IP address / port) specified with -L cannot be setup.
+the TAP mirror thread encounters an error reading from or writing to the VPN adapter.
+New INI file directive ExitLevel = 1 that does the same as -x
+
+2016-12-12 (1107)
+Fixed a bug in all Cygwin builds that vlmcsd could not be properly stopped if it was started as a service.
+Updated ./src/GNUmakefile to include CFLAG NO_TAP in FEATURES=minimum
+Updated GNUmakefile help to explain CFLAG NO_TAP
+Fixed a bug in all Windows and Cygwin builds with TCP port locking
+Worked around a problem with POSIX 2008 compatibility in the bionic library of Android 1.5 builds that realpath is unable to allocate a string buffer.
+2016-12-06 (1106)
+Windows and Cygwin versions of vlmcsd have new command line option -O to use an OpenVPN Tap or TeamViewer VPN adapter for easy self-activation
+New INI file directive VPN= (same as command line option -O)
+New CFLAG NO_TAP that compiles vlmcsd without support for a TAP or TeamViewer VPN adapter.
+Fixed a bug that time spans in command line options -O, -A and -R were misinterpreted in rare cases.
+2016-11-28 (1105)
+Worked around a bug in older uclibc (0.9.30.x) that realpath is not POSIX 2008 compliant (thx to alorsnon).
+New binaries for the PowerPC architecture using Linux and musl.
+2016-11-26 (1104)
+vlmcsd now supports loading a KMS product database from file (external database)
+vlmcsd pre-built binaries now only include a basic database which allows them to perform all tasks as usual. However, if you log, all product names show as "Unknown". For logging with clear text names instead of just GUIDs you'll need an external database. You'll find a full product database in ./etc/vlmcsd.kmd
+pre-built binaries of vlmcsd and vlmcs look for an external database in a file named vlmcsd.kmd in the same directory as vlmcsd and vlmcs. If it is found, the database is loaded automatically on program start up. If you want a full database (for logging), just put vlmcsd.kmd in the same directory as your vlmcsd binary. On OpenBSD, Minix and The Hurd systems, vlmcsd and vlmcs look for /etc/vlmcsd.kmd instead.
+New command line option -j <filename> in vlmcs and vlmcsd to load a specific external database. -j- disables loading a default database.
+New INI file parameter KmsData = <filename> which does the same as command line option -j.
+New CFLAG -DNO_EXTERNAL_DATA to compile vlmcsd without support for loading an external database.
+New CFLAG -DNO_INTERNAL_DATA to compile vlmcsd without an internal database at all. vlmcsd will fail, if it doesn't find an external database.
+New make command line option DATA=<filename> to compile vlmcsd with a custom default location for an external database, e.g. DATA=/usr/local/etc/vlmcsd
+New CFLAG -DUNSAFE_DATA_LOAD to compile vlmcsd without checking an external database for integrity. This safes some bytes but you risk remote code execution if you load a specially crafted database. It is strongly recommended not use this CFLAG.
+New CFLAG -DFULL_INTERNAL_DATA to compile vlmcsd with a full internal database. If you combine -DFULL_INTERNAL_DATABASE and -DNO_EXTERNAL_DATA, your resulting binary will work like previous versions of vlmcsd.
+CFLAGs -DNO_EXTENDED_PRODUCT_LIST and -DNO_BASIC_PRODUCT_LIST have been removed.
+make command line options WINDOWS= and OFFICE201X= have been removed.
+A custom database can be created with License Manager 4.5 or higher.
+Fixed a bug in ./src/GNUmakefile that CFLAGs -DNO_STRICT_MODES and -DNO_CLIENT_LIST were not automatically defined, if FEATURES=minimum was specified on the make command line or libkms was built.
+Fixed a bug that the availability of shared memory was not properly detected in Android builds.
+vlmcs now includes more clear-text error messages if the KMS server reports an error.
+The Windows version of vlmcs will now convert all error messages from a KMS server to clear-text.
+In non-verbose logs vlmcsd will now display the SKU ID instead of 'Unknown' (requested by mkuba50)
+The Atheros OpenWRT pre-built binaries now support limiting concurrent clients in vlmcsd with command line option -m.
+The Linux x32 binaries now link with bfd instead of gold which makes them smaller.
+Fixed a bug that the Windows version of vlmcsd did not lock the listening port if vlmcsd was compiled with CFLAG SIMPLE_SOCKETS. This also affected libkms32.dll and libkms64.dll.
+Removed unecessary socket shutdown calls in vlmcsd.
+The RPC code of vlmcsd has been hardened against emulator detection
+vlmcsd now checks the Interface UUID during RPC binding and sends a proper NACK CTX results.
+vlmcsd now returns a proper RPC_PT_FAULT package if a client tries to call an unbound CTX index.
+Fixed a bug that vlmcsd complained about wrong Ndr64 Ctx even if Ndr64 is not used if vlmcsd was compiled with CFLAG -D_PEDANTIC.
+You can now specify AUXV=1 on the make command line for any toolchain that defines __GLIBC__. In previous versions, AUXV=1 was ignored if __linux__ wasn't defined by the toolchain.
+2016-11-04 (1103)
+New binary vlmcsd-armelv7-bcm47xx_53xx-openwrt-musl to support OpenWRT on ARM based Broadcom 47xx to 53xx chips
+New binary vlmcsd-armelv7-bcm47xx_53xx-openwrt-musl-static (same as above as a static build)
+New binary vlmcsd-armelv7-bcm47xx_53xx-openwrt-glibc for glibc based OpenWRT builds
+Changed version control system from subversion to git
+Fixed a bug that -c1 could fail on some Linux builds (due to implicit definition of llabs)
+Included forgotten CFLAG -DNO_CLIENT_LIST in GNUmakefile help
+Replaced default start up code in the Visual C++ builds of vlmcsd, vlmcs and vlmcsdmulti with own code (smaller binaries)
+Visual C++ builds of vlmcsd, vlmcs and vlmcsdmulti now run under XP (SP3 required) and Windows Server 2003
+2016-10-25 (svn1099)
+Fixed a bug that vlmcs could not send more than request to servers that do not support NDR64.
+vlmcsd now supports maintaing a list of clients (CMIDs) for better prevention of emulator detection (can be disabled at compile time using new CFLAG -DNO_CLIENT_LISTS).
+CFLAG -DNO_STRICT_MODES now automatically includes -DNO_CLIENT_LISTS.
+New vlmcsd command line options -M0 (default) and -M1 to disable or enable maintaining CMIDs.
+New vlmcsd command line options -E0 (default) and -E1 to disable or enable starting with an empty CMID list. Ignored if -M0 is used.
+New INI file parameter MaintainClients (same as -M0 and -M1)
+New INI file parameter StartEmpty (same as -E0 and -E1)
+Improved auto detection for availability of Posix threads
+Fixed a bug in the cygwin version of vlmcsd that the logging mutex was not initialized.
+Fixed a bug in vlmcsd that a request that was too long was not correctly detected.
+The syslinux.cfg file of the bootable floppy has a new parameter VLMCSD_EXTRA_ARGS to specify additional command line options that will be passed to vlmcsd (requested by vactis).
+The bootable floppy now uses the threads version of vlmcsdmulti to be able to use -M1 (stripped down kernel has no shared memory support).
+Fixed a bug in the Linux build script that some vlmcsdmulti binaries were not built correctly.
+Fixed a typo in the sample vlmcsd.ini file (thx to qewlpal).
+Changed the default HWID to current Ratiborus virtual machine.
+The OpenBSD pre-compiled binary now uses threads instead of fork because of missing pthread_mutexattr_setpshared.
+2016-10-21 (svn1085)
+New CFLAG -DSIMPLE_RPC which disables support for NDR64 and BTFN in the RPC protocol
+NDR64 and BTFN can now be turned off and on seperately for client and server (required by libkms)
+New command line options -c0 and -c1 for vlmcsd. -c1 causes to refuse activation if the time of the server and the client differs by more than 4 hours. This is useful for protection against emulator detection.
+New INI file parameter CheckClientTime (same effect as -c0 and -c1)
+Renamed CFLAG -DNO_WITHELISTING to -DNO_STRICT_MODES. It disables whitelisting and time checking.
+Fixed a bug that vlmcsd and vlmcs crashed on CPUs with alignment requirements (PowerPC64, mips64 and sparc64) in 64-bit mode
+2016-10-19 (svn1080)
+Fixed a bug that Office 2013 preview was not detected as a beta/preview product (thx to Aty).
+Fixed a bug that the AppList was not compiled in some szenarios where it is actually needed.
+Fixed a bug that a function in output.c was compiled even if not needed (e.g. NO_LOG defined).
+2016-10-19 (svn1079)
+vlmcs, vlmcsd and libkms no longer report unspecific errors like !0 but a correct error number that can be converted to a readable string using platform specific APIs (strerror, FormatMessage, etc.)
+Fixed a bug that vlmcsd could not be compiled with SIMPLE_SOCKETS on systems that do not support IPv6 (e.g. Minix)
+Visual Studio Linux projects have been temporarily moved to ./src. This is due to a bug in the Visual C++ for Linux extension.
+correctly set a seperate obj dierectory for each project in Visual Studio projects.
+Updated DragonFlyBSD build system to version 4.6
+Updated gcc to version 6.2 for DragonFlyBSD builds.
+vlmcsd now reports at least twice as much Active Clients as the N Count Policy in the request to make emulator detection more difficult.
+New command line options -K0, -K1, -K2 and -K3 in vlmcsd that allow whitelisting of KMS IDs. vlmcsd can now refuse unknown KMS IDs, KMS IDs with incorrect App IDs, retail KMS IDs (e.g. Windows Home Editions) and beta/preview KMS IDs (requested by Carlos Detweiller)
+New INI file parameter WhitelistingLevel (same as -K0, -K1, -K2 and -K3)
+New CFLAG -DNO_WHITELISTING to compile vlmcsd without the whitelisting feature.
+libkms now supports RPC feature selection and checking (BTFN, NDR64) during RPC bind. Will be used in future versions of License Manager for advanced emulator detection.
+2016-10-12 (svn1065)
+Fixed a bug in MSVC builds that caused incorrect parsing of negative integer numbers.
+MSVC builds now include the compiler version when using option -V in vlmcs and vlmcsd.
+Fixed a bug in all Windows builds of vlmcsd that -m accepted a maximum value of 32767.
+Added support for Visual Studio remote building and debugging on Linux (Requires either Visual Studion "15" preview 5 or Visual Studio 2015 with the Linux C++ extension)
+New improved directory structure
+All source files are in ./src
+man file are in ./man
+All executables go to ./bin by default
+All libraries go to ./lib
+Temporary files will be created in ./build (execpt *.d files if you use DEPENDENCIES=1. These must be created in ./src for dependencies to work)
+Sample vlmcsd.ini is now in ./etc
+GNUmakefile now always accepts generic names vlmcs, vlmcsd, vlmcsdmulti, libkms and libkms-static as a target name even if *_NAME variables are set
+Marked all MSVC binaries to safely run from CD and Network and marked them as Terminal Server aware
+Fixed build warnings with incorrect order of inclusion of windows.h and winsock2.h
+Fixed a build bug that the -fPIC compiler was not automatically set if you build libkms on systems that use ELF binaries
+Fixed a bug that caused libkms did not build correctly if VERBOSE=1 was specified on the make command line
+The FreeBSD build environment was upgraded to FreeBSD 11.0.
+NetBSD 64-bit binaries now compile with gcc 6.2
+Updated GNU Hurd compiler to gcc 6.2
+kFreeBSD compiler updated to 6.2
+2016-10-06 (svn1031)
+Swapped SKU IDs for Win 2016 Azure Core and Cloud Storage because I trust the pkeyconfig files more than the *.cilx files but still not 100 % sure which is which.
+vlmcsd, vlmcs, vlmcsdmulti and libkms now compile with Visual Studio 2013 and 2015
+Added Visual Studio 2015 solution
+Updated Windows build script to build Visual Studio versions
+Fixed a bug in vlmcsd that Office 2016 reported 50 active clients instead of 10
+Windows versions of vlmcsd, vlmcs, vlmcsdmulti and libkms now built with Visual C++ (gcc versions still available with suffix -gcc.exe, all msrpc versions still built with gcc)
+Updated Mac OS X to Sierra and build tools to Xcode 8.0, clang 3.8, gcc 6.2.0
+2016-09-16 (svn1016)
+If vlmcsd is compiled with -DNO_LOG, no product names will be included in the binary
+Some internal changes to easier maintain EPIDs and PKEYCONFIGs
+The release date of Windows 2016 is now the minimum date generated in random EPIDs
+New compile time CFLAG -DSMALL_AES that implements a smaller but much slower version of AES
+It is now safe again to use -DNO_BASIC_PRODUCT_LIST when compiling vlmcsd. Those KMS IDs required to send a proper EPID will always be included in the binary.
+The APP ID list will no longer be compiled, if -DNO_LOG is used since it is no longer required because EPID generation now uses KMS IDs instead of APP IDs
+Fixed a bug in vlmcs that incorrect HMACs in KMSv6 were not detected (Thx to CODYQX4)
+Updated FreeBSD toolchain to gcc 6.1
+2016-09-03 (svn1006)
+Changed the GNUmakefile to build Windows versions on Windows after Cygwin's upgrade to MingW32 gcc 5.4 based toolchain
+vlmcsd now uses a seperate EPID for Office 2016 (Thx to Aty and echo2)
+New command line option -6 in vlmcsd to specify a user-defined EPID for Office 2016
+The INI file no longer uses GUIDs to define custom EPIDs and HWIDs. Use keywords Windows, Office2010, Office2013 and Office2016 instead.
+Fixed a bug in the -G option of vlmcs that wrong requests were sent to the KMS server
+The -G option in vlmcs now uses the new INI file format for creating/updating INI files
+The GNUmakefile command line parameter FEATURES=minimum no longer includes -DNO_BASIC_PRODUCT_LIST because KMS IDs are now required to distinguish between Office 2013 and Office 2016
+New GNUmakefile command line option OFFICE2016= to specify a default EPID for Office2016 at compile time
+If -DNO_BASIC_PRODUCT_LIST is used in GNUmakefile CFLAGS, the resulting binary is unable to send valid EPIDs for Office 2016. This compile time option should no longer be used.
+The bootable floppy now accepts a kernel boot parameter of OFFICE2016= to specify an EPID for Office 2016
+2016-08-27 (svn1003)
+Added new KMS ID "Windows 10 2016 (Volume)" (thx to kelorgo and Aty)
+Moved Windows 10 Enterprise 2016 LTSB and LTSB N to "Windows 10 2016 (Volume)"
+2016-08-26 (svn1001)
+Added some more products (SKU IDs and KMS IDs)
+Fixed a critical bug in random ePID generation that ePIDs were generated that never would activate Office 2016, Windows 10, Windows 8.1, Windows 2012 R2 and Windows 2016 on a genuine server.
