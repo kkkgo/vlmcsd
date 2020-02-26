@@ -1,0 +1,48 @@
+name: vlmcsd
+version: "1112"
+summary: Portable open-source KMS Emulator in C
+description: |
+  vlmcsd is a replacement for Microsoft's KMS
+  server It contains vlmcs a KMS test client, 
+  mainly for debugging purposes, that also can
+  "charge" a genuine KMS server designed to run
+  on an always-on or often-on device,e.g. 
+  router, NAS Box, ... intended to help people
+  who lost activation of their legally-owned 
+  licenses, e.g. due to a change of hardware
+  (motherboard, CPU, ...)
+
+confinement: strict
+base: core18
+grade: stable
+
+apps:
+  vlmcs:
+    command: vlmcs
+    plugs: 
+      - network
+
+  vlmcsd:
+    command: vlmcsd
+    daemon: forking
+    plugs:
+      - network
+      - network-bind
+
+parts:
+  vlmcsd:
+    plugin: make
+    source: https://github.com/kategray/vlmcsd.git
+    source-tag: "1112"
+    build-packages:
+      - g++
+      - make
+    artifacts:
+      - bin/vlmcs
+      - bin/vlmcsd
+
+layout:
+  /etc/vlmcsd/vlmcsd.ini:
+    symlink: $SNAP_DATA/etc/vlmcsd.ini
+  /etc/vlmcsd/vlmcsd.kmd:
+    symlink: $SNAP_DATA/etc/vlmcsd.kmd
