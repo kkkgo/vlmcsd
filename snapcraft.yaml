@@ -12,9 +12,6 @@ description: |
   licenses, e.g. due to a change of hardware
   (motherboard, CPU, ...)
 
-architectures:
-  - build-on: [ i386, amd64 ]
-
 confinement: strict
 base: core18
 grade: stable
