@@ -1,5 +1,5 @@
 # vlmcsd - Portable open-source KMS Emulator in C  
-**vlmcsd-1113-2020-03-28   [Binaries][1]**   
+**vlmcsd-1113-2020-03-28   [Releases][1]**   
 
 |Supported operating systems / run-time environments|
 :-|
@@ -254,5 +254,5 @@ Numbers|Product names
 > https://forums.mydigitallife.net/threads/emulated-kms-servers-on-non-windows-platforms.50234/
 
 
-  [1]: https://github.com/kkkgo/vlmcsd/tree/master/binaries "binaries"
+  [1]: https://github.com/kkkgo/vlmcsd/releases "releases"
   [2]: https://github.com/kkkgo/vlmcsd/tree/master/man
