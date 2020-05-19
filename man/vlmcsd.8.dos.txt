@@ -722,15 +722,17 @@ SUPPORTED OPERATING SYSTEMS
 
 SUPPORTED PRODUCTS
        vlmcsd can answer activation requests for the following products:  Win-
-       dows Vista, Windows 7, Windows 8, Windows 8.1, Windows 10 (up to 1703),
+       dows Vista, Windows 7, Windows 8, Windows 8.1, Windows 10 (up to 1809),
        Windows Server 2008, Windows Server 2008 R2, Windows Server 2012,  Win-
        dows  Server  2012  R2, Windows Server 2016, Office 2010, Project 2010,
        Visio 2010, Office 2013, Project 2013, Visio 2013, Office 2016, Project
-       2016,  Visio  2016. Newer products may work as long as the KMS protocol
-       does not change. A complete list of fully  supported  products  can  be
-       obtained using the -x option of vlmcs(1).
+       2016, Visio 2016, Office 2019, Project 2019, Visio 2019. Newer products
+       may work as long as the KMS protocol does not change. A  complete  list
+       of  fully  supported  products  can  be obtained using the -x option of
+       vlmcs(1).
 
-       Office, Project and Visio must be volume license versions.
+       Windows Vista, Windows 7, Office, Project  and  Visio  must  be  volume
+       license versions.
 
 
 FILES
@@ -780,4 +782,4 @@ SEE ALSO
 
 
 
-Hotbird64                        October 2018                        VLMCSD(8)
+Hotbird64                        February 2019                       VLMCSD(8)
