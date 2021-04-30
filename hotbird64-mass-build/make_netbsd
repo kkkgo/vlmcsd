@@ -19,7 +19,7 @@ CFCLANG="-pipe -fno-common -fno-exceptions -fno-stack-protector -fno-unwind-tabl
 LF="-Wl,-z,norelro -Wl,--hash-style=sysv -Wl,--build-id=none"
 LFCLANG="-Wl,-z,norelro -Wl,--hash-style=sysv"
 
-gmake $MAKEFLAGS CC=/usr/pkg/gcc6/bin/gcc PROGRAM_NAME=$BINDIR/vlmcsd-NetBSD-x64 CLIENT_NAME=$BINDIR/vlmcs-NetBSD-x64 MULTI_NAME=$BINDIR/vlmcsdmulti-NetBSD-x64 allmulti CFLAGS="$CF" LDFLAGS="$LF"
+gmake $MAKEFLAGS CC=/usr/pkg/gcc7/bin/gcc PROGRAM_NAME=$BINDIR/vlmcsd-NetBSD-x64 CLIENT_NAME=$BINDIR/vlmcs-NetBSD-x64 MULTI_NAME=$BINDIR/vlmcsdmulti-NetBSD-x64 allmulti CFLAGS="$CF" LDFLAGS="$LF"
 
 gmake allmulti CC=gcc $MAKEFLAGS CAT=2 MULTI_NAME=$BINDIR/vlmcsdmulti-NetBSD-x86 PROGRAM_NAME=$BINDIR/vlmcsd-NetBSD-x86 CLIENT_NAME=$BINDIR/vlmcs-NetBSD-x86 CFLAGS="$CF45 -m32" LDFLAGS="$LF"
 

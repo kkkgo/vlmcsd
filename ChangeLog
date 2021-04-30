@@ -1,4 +1,15 @@
 CHANGES
+2020-03-28 (1113)
+.kmd file format changed to version 2.0 (version 1.x files cannot be used any more)
+host builds are now configurable in the .kmd file
+Bugfix: vlmcs did not use the configured CSVLKs when used with -G
+Bugfix: .kmd file version was not displayed correctly on big-endian systems
+Bugfix: Posix versions of vlmcsd were unable to read MS-DOS/Windows text files with crlf line termination
+Bugfix: the NO_INI_FILE CFLAG did not work in combination with some other directives
+New CFLAG NO_COMPILER_UAA disables all compiler/platform support for big-endian/little-endian conversion. Required on some toolchains that are incorrectly configured
+The bootable floppy directory now contains a .vmx file that can be used to directly start the floppy in VMware products, e.g. the free VMware player
+When you use -v all CSVLK available in the .kmd file are now logged at program startup.
+If you do not use -N0 or -N1 to force disable/enable the NDR64 protocol, vlmcsd now uses the host build to decide if it uses NDR64 depending if a genuine KMS is using NDR64 on that build.
 2018-10-15 (1112)
 Support for Windows 10 1809, Windows Server 2019 and Office 2019 built-in
 vlmcsd now has fully configurable CSVLKs that allow a custom EPID and HwId for each CSVLK to be specified.

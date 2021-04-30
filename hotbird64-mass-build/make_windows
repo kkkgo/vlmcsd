@@ -36,13 +36,13 @@ make $MAKEFLAGS libkms FEATURES=minimum THREADS=1 DLL_NAME=../bin/cygkms32.dll D
 make $MAKEFLAGS libkms FEATURES=minimum THREADS=1 DLL_NAME=../bin/cygkms64.dll DNS_PARSER=internal CC=x86_64-pc-cygwin-gcc.exe CFLAGS="$CF -flto=jobserver -fvisibility=hidden" PLATFORMFLAGS="$PF64" LDFLAGS="$LFCYG64 -Wl,--no-seh"
 make $MAKEFLAGS allmulti THREADS=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-x86 PROGRAM_NAME=../bin/vlmcsd-cygwin-x86 MULTI_NAME=../bin/vlmcsdmulti-cygwin-x86 CC=i686-pc-cygwin-gcc.exe CFLAGS="$CF" PLATFORMFLAGS="$PF32" LDFLAGS="$LFCYG32 -Wl,--no-seh"
 make $MAKEFLAGS allmulti THREADS=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-x64 PROGRAM_NAME=../bin/vlmcsd-cygwin-x64 MULTI_NAME=../bin/vlmcsdmulti-cygwin-x64 CC=x86_64-pc-cygwin-gcc.exe CFLAGS="$CF" PLATFORMFLAGS="$PF64" LDFLAGS="$LFCYG64 -Wl,--no-seh"
-make $MAKEFLAGS MSRPC=1 THREADS=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-msrpc-x86 PROGRAM_NAME=../bin/vlmcsd-cygwin-msrpc-x86 MULTI_NAME=../bin/vlmcsdmulti-cygwin-msrpc-x86 CC=i686-pc-cygwin-gcc.exe CFLAGS="$CF -fasynchronous-unwind-tables" PLATFORMFLAGS="$PF32" LDFLAGS="$LFCYG32"
+#make $MAKEFLAGS MSRPC=1 THREADS=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-msrpc-x86 PROGRAM_NAME=../bin/vlmcsd-cygwin-msrpc-x86 MULTI_NAME=../bin/vlmcsdmulti-cygwin-msrpc-x86 CC=i686-pc-cygwin-gcc.exe CFLAGS="$CF -fasynchronous-unwind-tables" PLATFORMFLAGS="$PF32" LDFLAGS="$LFCYG32"
 make $MAKEFLAGS MSRPC=1 THREADS=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-msrpc-x64 PROGRAM_NAME=../bin/vlmcsd-cygwin-msrpc-x64 MULTI_NAME=../bin/vlmcsdmulti-cygwin-msrpc-x64 CC=x86_64-pc-cygwin-gcc.exe CFLAGS="$CFMSRPC" PLATFORMFLAGS="$PF64" LDFLAGS="$LFCYG64"
 make $MAKEFLAGS vlmcsdmulti MSRPC=1 THREADS=1 DNS_PARSER=internal MULTI_NAME=../bin/vlmcsdmulti-cygwin-msrpc-x64 CC=x86_64-pc-cygwin-gcc.exe CFLAGS="$CFMSRPC -flto=jobserver" PLATFORMFLAGS="$PF64" LDFLAGS="$LFCYG64"
-make $MAKEFLAGS vlmcsdmulti MSRPC=1 THREADS=1 DNS_PARSER=internal MULTI_NAME=../bin/vlmcsdmulti-cygwin-msrpc-x86 CC=i686-pc-cygwin-gcc.exe CFLAGS="$CFMSRPC -flto=jobserver" PLATFORMFLAGS="$PF32" LDFLAGS="$LFCYG32"
+#make $MAKEFLAGS vlmcsdmulti MSRPC=1 THREADS=1 DNS_PARSER=internal MULTI_NAME=../bin/vlmcsdmulti-cygwin-msrpc-x86 CC=i686-pc-cygwin-gcc.exe CFLAGS="$CFMSRPC -flto=jobserver" PLATFORMFLAGS="$PF32" LDFLAGS="$LFCYG32"
 
 #make $MAKEFLAGS THREADS=1 MSRPC=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-msrpc-x86-openssl-EXPERIMENTAL CRYPTO=openssl_with_aes PROGRAM_NAME=../bin/vlmcsd-cygwin-x86-openssl-EXPERIMENTAL CC=i686-pc-cygwin-gcc.exe CFLAGS="$CFMSRPC" PLATFORMFLAGS="$PF32" LDFLAGS="$LFCYG32"
-make $MAKEFLAGS THREADS=1 MSRPC=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-msrpc-x64-openssl-EXPERIMENTAL CRYPTO=openssl_with_aes PROGRAM_NAME=../bin/vlmcsd-cygwin-x64-openssl-EXPERIMENTAL CC=x86_64-pc-cygwin-gcc.exe CFLAGS="$CFMSRPC" PLATFORMFLAGS="$PF64" LDFLAGS="$LFCYG64"
+#make $MAKEFLAGS THREADS=1 MSRPC=1 DNS_PARSER=internal CLIENT_NAME=../bin/vlmcs-cygwin-msrpc-x64-openssl-EXPERIMENTAL CRYPTO=openssl_with_aes PROGRAM_NAME=../bin/vlmcsd-cygwin-x64-openssl-EXPERIMENTAL CC=x86_64-pc-cygwin-gcc.exe CFLAGS="$CFMSRPC" PLATFORMFLAGS="$PF64" LDFLAGS="$LFCYG64"
 
 export CAT=2
 #unset CAT
@@ -95,5 +95,3 @@ cp -p man/vlmcs.1 man/vlmcsdmulti.1 /usr/share/man/man1
 
 bzip2 -f /usr/share/man/man7/vlmcsd-floppy.7 /usr/share/man/man5/vlmcsd.ini.5 /usr/share/man/man7/vlmcsd.7 /usr/share/man/man8/vlmcsd.8 /usr/share/man/man1/vlmcs.1 /usr/share/man/man1/vlmcsdmulti.1 &
 
-# Copy stuff to distribution server
-scp -p bin/*.exe bin/*.dll root@ubuntu64:x/binaries/Windows/intel

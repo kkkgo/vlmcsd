@@ -187,6 +187,12 @@ CONFIGURATION
               it is started.
 
 
+       OFFICE2019=epid
+              Defines the ePID that is used for Office  2019  activations.  If
+              you ommit this parameter, vlmcsd(8) generates a random ePID when
+              it is started.
+
+
        WINCHINAGOV=epid
               Defines the ePID that is used for Windows China Government  Edi-
               tion activations (Enterprise G/GN). If you ommit this parameter,
@@ -545,4 +551,4 @@ SEE ALSO
 
 
 
-Hotbird64                          May 2017                   VLMCSD-FLOPPY(7)
+Hotbird64                        February 2019                VLMCSD-FLOPPY(7)
