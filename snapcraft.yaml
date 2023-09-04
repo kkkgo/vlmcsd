@@ -1,5 +1,5 @@
 name: vlmcsd
-version: "1112"
+version: "1113"
 summary: Portable open-source KMS Emulator in C
 description: |
   vlmcsd is a replacement for Microsoft's KMS
@@ -33,7 +33,7 @@ parts:
   vlmcsd:
     plugin: make
     source: https://github.com/kategray/vlmcsd.git
-    source-tag: "1112"
+    source-tag: "1113"
     build-packages:
       - g++
       - make
